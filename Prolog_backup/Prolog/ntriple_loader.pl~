@@ -1,0 +1,2 @@
+:- use_module(library(semweb/rdf_ntriples)).
+read_ntriples("drugbank_small.nt").

@@ -18,7 +18,7 @@
 %*******************************************
 %****** Load Data From all sources ************
 loadExternalBeliefs :-
-    drugbankAssertCausationFromCategory,
+    drugbankAssertCausationFromCategoryPlus,
     drugbankAssertIncompatibilityBelief,
     sameSituationSider, siderAssertCausationSideEffect,
     dikbAssertIncompatibilityBelief,
@@ -110,7 +110,7 @@ drugbankAssertIncompatibilityBelief :-
 		%same(DrugT2, Drug2),
 	rdf(DrugT2, owl:sameAs, Drug2),
 	%to make sure it loads only the data from the drugbank graph
-		rdf_global_id('drugbank_small.nt', G),
+		rdf_global_id('file:///C:/Users/Josip/Documents/Prolog/drugbank_small.nt', G),
 		rdf(Drug1, drugbank:'interactsWith', Drug2, G:_)
     ) ,
     (	rdf_global_id(data:'drugbank', SourceURI),

@@ -1,0 +1,24 @@
+:- use_module(library(semweb/rdfs)).
+:- use_module(library(semweb/rdf_db)).
+:- use_module(library(clpb)).
+
+:- use_module(library(semweb/rdf_ntriples)).
+:- rdf_load("drugbank_small.nt").
+
+
+:- style_check(-discontiguous).
+
+% Base model requires Guidelines, Recommendations and Transitions.
+:- include(guidelines).
+:- include(externalSources).
+:- include(interactionRules).
+:- include(interaction_graph).
+:- include(recommendations).
+:- include(transition).
+:- include(preconditionnew).
+:- use_rendering(graphviz).
+
+
+:- loadExternalBeliefs.
+:- inferInternalInteractions.
+:- inferExternalInteractions.

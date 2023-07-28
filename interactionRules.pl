@@ -136,6 +136,27 @@ detectAlternativeActions :-
      ),
      rdf_assert(I1, owl:sameAs, I2, my_entailments) ).
 
+% Josip addition
+% check drug category for ADR risk
+detectSameCategoryRisk :-
+   forall((
+       regulates(Reg, Norm1, _, 'should', CB1),
+       regulates(Reg, Norm2, _, 'should', CB2),
+       rdfs_individual_of(CB1, vocab:'CausationBelief'), % Check if they are indeed causation beliefs
+       rdfs_individual_of(CB2, vocab:'CausationBelief'),
+       causes(EventT1, EventT3, Frequency, CB1), % Check if causes different events
+       causes(EventT2, EventT4, Frequency, CB2),
+       different(EventT1, EventT2), % should be different
+       different(EventT3, EventT4)
+   ),
+   (existsInteraction('SameCategoryRisk', Norm1, Norm2))),
+   forall( (
+        interacts('RepeatedAction', Norm1, Norm2, I1),
+	interacts('RepeatedAction', Norm2, Norm3, I2),
+	different(Norm1,Norm3), different(I1, I2)
+     ),
+     rdf_assert(I1, owl:sameAs, I2, my_entailments) ).
+
 detectReparableTransition :-
     forall((
 	    regulates(Reg, Norm1, Act1, 'should-not', CB1),
@@ -228,4 +249,18 @@ detectExternalIncompatibleEffect :-
 	different(CB2, CB)
      ),
      (existsInteraction('ExternalIncompatibleEffects', Norm1, Norm2, CB))).
+
+
+getExternalIncompatibleEffect(Reg, Act1, Strength, Tr1, St1, Tr) :-
+   regulates(Reg, Norm1, Act1, Strength, CB1),
+   causes(Act1, Tr1, 'always', CB1),
+   ((Strength = 'should', rdf(Tr1, vocab:'hasTransformableSituation', St1));
+   (Strength = 'should-not', rdf(Tr1, vocab:'hasExpectedSituation', St1))),
+   causes(Act, Tr, 'always', CB),
+   different(Act, Act1),
+   rdf(Tr, vocab:'hasExpectedSituation', St1),
+   regulates(Reg, Norm2, Act2, 'should', CB2),
+   relatedTypes(Act, Act2),
+   different(CB2, CB).
+
 

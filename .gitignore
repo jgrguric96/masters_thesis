@@ -1,0 +1,14 @@
+# Zipped files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.bz2
+
+# Ntriples, Nquads
+*.nt
+*.nq
