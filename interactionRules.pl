@@ -3,6 +3,12 @@
 /* *********************************** */
 
 :- include(guidelines).
+% Uncomment below if you are excluding interaction_graph
+%:- include(recommendations).
+%:- include(transition).
+%:- include(interactions).
+%:- include(preconditionNew).
+
 
 % Check if an interaction exist among two norms
 interacts(IntType, Norm1, Norm2, Interaction) :-

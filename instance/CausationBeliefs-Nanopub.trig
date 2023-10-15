@@ -1316,3 +1316,41 @@ data:CBAcebutololAtrioventricular_publicationinfo {
         prov:generatedAtTime          "2015-10-01"^^xsd:dateTime ;
 		    prov:wasAttributedTo          data:Veruska.
 }
+##############################################################
+
+data:CBClopidogrelHaemorrhage_head {
+        data:CBClopidogrelHaemorrhage_nanopub
+          a                             nanopub:Nanopublication ;
+          nanopub:hasAssertion          data:CBClopidogrelHaemorrhage ;
+          nanopub:hasProvenance         data:CBClopidogrelHaemorrhage_provenance ;
+          nanopub:hasPublicationInfo    data:CBClopidogrelHaemorrhage_publicationinfo .
+}
+
+
+data:CBClopidogrelHaemorrhage {
+        data:ActAdministerClopidogrel
+                vocab:causes                  data:TrIncreaseRiskHaemorrhage .
+        data:CBClopidogrelHaemorrhage
+
+                a                             vocab:CausationBelief ;
+                vocab:strength                "L1"^^xsd:string;
+               vocab:frequency               "always"^^xsd:string.
+}
+
+
+data:CBClopidogrelHaemorrhage_provenance {
+        data:CBClopidogrelHaemorrhage_provenance
+                a                             oa:Annotation ;
+                oa:hasBody                    data:CBClopidogrelHaemorrhage ;
+                oa:hasTarget                  [ oa:hasSource <https://pubmed.ncbi.nlm.nih.gov/22195153/> ] .
+        data:CBClopidogrelHaemorrhage
+                prov:wasDerivedFrom           <https://pubmed.ncbi.nlm.nih.gov/22195153/> .
+
+}
+
+
+data:CBClopidogrelHaemorrhage_publicationinfo {
+        data:CBClopidogrelHaemorrhage_nanopub
+                prov:generatedAtTime          "2015-10-01"^^xsd:dateTime ;
+                        prov:wasAttributedTo          data:Veruska.
+}

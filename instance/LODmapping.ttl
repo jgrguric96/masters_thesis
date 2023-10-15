@@ -176,4 +176,3 @@
 
 :DrugCatNSAID               owl:sameAs      drugcategory:anti-inflammatoryAgents\,Non-steroidal ;
                             owl:sameAs      drugcategory:Anti-InflammatoryAgents\,Non-Steroidal.
-

@@ -1235,3 +1235,82 @@
 }
 
 ##############################################################
+
+:CIG-Stent-Surgery
+	rdf:type vocab:ClinicalGuideline ;
+	rdfs:label "CIG for Stent-Surgery"@en .
+
+##############################################################
+
+:RecStent-Surgery-ClopidogrelThrombus_head {
+        :RecStent-Surgery-ClopidogrelThrombus_nanopub
+                a                             nanopub:Nanopublication ;
+                nanopub:hasAssertion          :RecStent-Surgery-ClopidogrelThrombus ;
+                nanopub:hasProvenance         :RecStent-Surgery-ClopidogrelThrombus_provenance ;
+                        nanopub:hasPublicationInfo    :RecStent-Surgery-ClopidogrelThrombus_publicationinfo .
+}
+
+
+:RecStent-Surgery-ClopidogrelThrombus {
+        :RecStent-Surgery-ClopidogrelThrombus
+                a                             vocab:ClinicalRecommendation ;
+                rdfs:label "should ClopidogrelThrombus"@en ;
+                vocab:strength "should"^^xsd:string ;
+                vocab:partOf :CIG-Stent-Surgery ;
+                vocab:aboutExecutionOf :ActAdministerClopidogrel;
+                vocab:basedOn :CBClopidogrelThrombus .
+}
+
+
+:RecStent-Surgery-ClopidogrelThrombus_provenance {
+        :RecStent-Surgery-ClopidogrelThrombus_provenance
+                a                             oa:Annotation ;
+                oa:hasBody                    :RecStent-Surgery-ClopidogrelThrombus ;
+                oa:hasTarget                  [ oa:hasSource <http://hdl.handle.net/10222/43703> ] .
+        :RecStent-Surgery-ClopidogrelThrombus
+            prov:wasDerivedFrom           <http://hdl.handle.net/10222/43703> .
+}
+
+
+:RecStent-Surgery-ClopidogrelThrombus_publicationinfo {
+        :RecStent-Surgery-ClopidogrelThrombus_nanopub
+                prov:generatedAtTime          "2015-10-01"^^xsd:dateTime ;
+                        prov:wasAttributedTo          :Veruska.
+}
+##############################################################
+
+:RecStent-Surgery-ClopidogrelHaemorrhage_head {
+        :RecStent-Surgery-ClopidogrelHaemorrhage_nanopub
+                a                             nanopub:Nanopublication ;
+                nanopub:hasAssertion          :RecStent-Surgery-ClopidogrelHaemorrhage ;
+                nanopub:hasProvenance         :RecStent-Surgery-ClopidogrelHaemorrhage_provenance ;
+                        nanopub:hasPublicationInfo    :RecStent-Surgery-ClopidogrelHaemorrhage_publicationinfo .
+}
+
+
+:RecStent-Surgery-ClopidogrelHaemorrhage {
+        :RecStent-Surgery-ClopidogrelHaemorrhage
+                a                             vocab:ClinicalRecommendation ;
+                rdfs:label "should-not ClopidogrelHaemorrhage"@en ;
+                vocab:strength "should-not"^^xsd:string ;
+                vocab:partOf :CIG-Stent-Surgery ;
+                vocab:aboutExecutionOf :ActAdministerClopidogrel;
+                vocab:basedOn :CBClopidogrelHaemorrhage .
+}
+
+
+:RecStent-Surgery-ClopidogrelHaemorrhage_provenance {
+        :RecStent-Surgery-ClopidogrelHaemorrhage_provenance
+                a                             oa:Annotation ;
+                oa:hasBody                    :RecStent-Surgery-ClopidogrelHaemorrhage ;
+                oa:hasTarget                  [ oa:hasSource <http://hdl.handle.net/10222/43703> ] .
+        :RecStent-Surgery-ClopidogrelHaemorrhage
+            prov:wasDerivedFrom           <http://hdl.handle.net/10222/43703> .
+}
+
+
+:RecStent-Surgery-ClopidogrelHaemorrhage_publicationinfo {
+        :RecStent-Surgery-ClopidogrelHaemorrhage_nanopub
+                prov:generatedAtTime          "2015-10-01"^^xsd:dateTime ;
+                        prov:wasAttributedTo          :Veruska.
+}

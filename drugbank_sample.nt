@@ -1,4 +1,0 @@
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB01246> <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/interactsWith> <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB00843> .
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB02159> <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/description> "A clear, colorless, viscous organic solvent and diluent used in pharmaceutical preparations. [PubChem]" .
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB03352> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugbank/drugs> .
-<http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB06616> <http://www.w3.org/2002/07/owl#sameAs> <http://wifo5-04.informatik.uni-mannheim.de/drugbank/resource/drugs/DB01026> .

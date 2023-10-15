@@ -1,5 +1,3 @@
-:- use_rendering(graphviz).
-
 :- include(recommendations).
 :- include(transition).
 :- include(interactions).

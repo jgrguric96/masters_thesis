@@ -11,11 +11,7 @@
 
 :- use_module(library(semweb/turtle)).
 :- use_module(library(semweb/rdf_http_plugin)).
-%:- use_module(library(semweb/rdfs)).
 :- use_module(library(semweb/rdf_db)).
-%:- use_module(library(semweb/rdf11)).
-%:- use_module(library(ugraphs), []).
-
 
 % Load TMR Schema. Both the basic + trm4i
 
@@ -65,47 +61,36 @@
             [format('trig'), register_namespaces(false),
              base_uri('http://anonymous.org/data/'), graph('http://anonymous.org/LODmapping')]) .
 
-%:- rdf_load('instance/LODmapping_altered.ttl',
-%            [format('trig'), register_namespaces(false),
-%             base_uri('http://anonymous.org/data/'),
-%             graph('http://anonymous.org/LODmapping')]) .
 
-
-
-
-% Rest of the inclusions
+% Rest of the inclusions - Guidelines has to be consulted once
+% again otherwise it fails to load
 
 :- include(interactionRules).
-:- include(interaction_graph).
+:- include(interaction_graph). % Contains unused graph functions. This can be excluded if
+% interactionRules include(...) lines are uncommented.
 :- include(externalSources).
 :- consult(guidelines).
 
-% Load
-
+% Load data
+% For the purposes of the paper this drugbank is enough despite its age
 :- use_module(library(semweb/rdf_ntriples)).
-:- rdf_load("drugbank_veruska_small.nt").
+:- rdf_load("data/drugbank_veruska_small.nt").
 
+% Assert internal interaction data
 :- propagGroupingCriteriaDrugToEventType.
 :- drugbankAssertCausationFromCategory.
 :- inferInternalInteractions.
 
 % Load the rest of the datasets
-:- rdf_load('sider_dump_new.nt').
-:- rdf_load('dikb.ttl').
-:- rdf_load('diag_mappings.nt').
-:- rdf_load('drug_mappings.nt').
-%:- rdf_load('dump-of-2012-generated-on-2012-07-09.nt'). % Memory leaks
-%
+:- rdf_load('data/sider_dump_new.nt').
+:- rdf_load('data/dikb.ttl').
+:- rdf_load('data/diag_mappings.nt').
+:- rdf_load('data/drug_mappings.nt').
+% Liddi was also avoided due to its issues, but they can be fixed
+% :- rdf_load('dump-of-2012-generated-on-2012-07-09.nt'). % Causing
+% Memory issues
 
-
-% Testing this just in case
-:- rdf_prefix(data, 'http://anonymous.org/data/').
-:- rdf_prefix(vocab, 'http://anonymous.org/vocab/').
-:- rdf_prefix(vocab4i, 'http://anonymous.org/vocab4i/').
-:- rdf_prefix(oa, 'http,//www.w3.org/ns/oa#').
-:- rdf_prefix(prov, 'http://www.w3.org/ns/prov#').
-:- rdf_prefix(nanopub, 'http://www.nanopub.org/nschema#').
-
+% make sure interactionRules is loaded
 :- ensure_loaded(interactionRules).
 
 % Finally we finish up with loading external beliefs

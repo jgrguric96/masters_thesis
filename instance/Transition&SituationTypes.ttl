@@ -356,3 +356,13 @@
 						:SitLowRiskFracture
                       )
 ] .
+:TrIncreaseRiskHaemorrhage rdf:type vocab:TransitionType, owl:NamedIndividual ;
+	vocab:hasTransformableSituation :SitLowRiskHaemorrhage ;
+	vocab:hasExpectedSituation :SitHighRiskHaemorrhage .
+
+:SitLowRiskHaemorrhage rdf:type vocab:SituationType, owl:NamedIndividual ;
+	vocab:umlsCode	"C0019080"^^xsd:string ;
+	rdfs:label "Situation is LowRiskHaemorrhage"@en .
+
+:SitHighRiskHaemorrhage rdf:type vocab:SituationType, owl:NamedIndividual ;
+	rdfs:label "Situation is HighRiskHaemorrhage"@en .

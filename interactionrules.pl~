@@ -3,6 +3,11 @@
 /* *********************************** */
 
 :- include(guidelines).
+:- include(recommendations).
+:- include(transition).
+:- include(interactions).
+:- include(preconditionNew).
+
 
 % Check if an interaction exist among two norms
 interacts(IntType, Norm1, Norm2, Interaction) :-
@@ -251,7 +256,7 @@ detectExternalIncompatibleEffect :-
      (existsInteraction('ExternalIncompatibleEffects', Norm1, Norm2, CB))).
 
 
-detectExternalIncompatibleEffect(Reg, Act1, Strength, Tr1, St1, Tr) :-
+getExternalIncompatibleEffect(Reg, Act1, Strength, Tr1, St1, Tr) :-
    regulates(Reg, Norm1, Act1, Strength, CB1),
    causes(Act1, Tr1, 'always', CB1),
    ((Strength = 'should', rdf(Tr1, vocab:'hasTransformableSituation', St1));
